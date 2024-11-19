@@ -31,7 +31,7 @@ export default function Main() {
         // clonazione oggetto
         const newPost = {
             id: Date.now(),
-            ...formData
+            ...postsData
         };
 
         // aggiornamento UI
@@ -45,7 +45,12 @@ export default function Main() {
 
     // funzione onChange
     function handleFormField(e) {
+        const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
 
+        setPostList({
+            ...postsData,
+            [e.target.name]: value
+        })
     }
 
     // funzione per cancellare post
@@ -74,21 +79,21 @@ export default function Main() {
                             <input type="text"
                                 id="textInput"
                                 placeholder="Titolo nuovo post"
-                                value={formData.name}
+                                value={postsData.name}
                                 onChange={handleFormField} />
 
                             {/* input immagine */}
                             <input type="text"
                                 id="textInput"
                                 placeholder="URL immagine"
-                                value={formData.image}
+                                value={postsData.image}
                                 onChange={handleFormField} />
 
                             {/* input contenuto */}
                             <textarea
                                 id="descInput"
                                 placeholder="Contenuto post..."
-                                value={formData.description}
+                                value={postsData.description}
                                 onChange={handleFormField}>
                             </textarea>
 
@@ -96,7 +101,7 @@ export default function Main() {
                             <select
                                 id="selectInput"
                                 placeholder="Seleziona categoria post"
-                                value={formData.category}
+                                value={postsData.category}
                                 onChange={handleFormField}>
                                 <option value="1">
                                     cat1
@@ -118,21 +123,21 @@ export default function Main() {
                             {/* input checkbox tags */}
                             <input type="checkbox"
                                 id="checkInput1"
-                                value={formData.tags}
+                                value={postsData.tags}
                                 onChange={handleFormField} />
                             <label>
                                 Tag1
                             </label>
                             <input type="checkbox"
                                 id="checkInput2"
-                                value={formData.tags}
+                                value={postsData.tags}
                                 onChange={handleFormField} />
                             <label>
                                 Tag2
                             </label>
                             <input type="checkbox"
                                 id="checkInput3"
-                                value={formData.tags}
+                                value={postsData.tags}
                                 onChange={handleFormField} />
                             <label>
                                 Tag3
@@ -141,7 +146,7 @@ export default function Main() {
                             {/* input pubblica o meno */}
                             <input type="checkbox"
                                 id="checkInputPublic"
-                                value={formData.public}
+                                value={postsData.public}
                                 onChange={handleFormField} />
                             <label>
                                 Post pubblico
