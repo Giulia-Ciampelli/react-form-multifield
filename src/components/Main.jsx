@@ -21,11 +21,12 @@ const initialPostsData = {
 
 export default function Main() {
     const [postsData, setPostsData] = useState(initialPostsData);
-    const [postList, setPostList] = useState(posts); // variabile db per chiarezza
+    const [postList, setPostList] = useState([]); // variabile vuota
 
     // funzione per aggiungere un post nuovo
     function addPost(e) {
         e.preventDefault();
+        console.log('form sent', postsData);
 
         // clonazione oggetto
         const newPost = {
@@ -59,10 +60,10 @@ export default function Main() {
         const postIndexTrash = Number(e.target.getAttribute('data-index'));
 
         // eliminare con filter
-        const newPosts = posts.filter((post, index) => index != postIndexTrash);
+        const newPosts = postList.filter((index) => index != postIndexTrash);
 
         // aggiornamento UI
-        setPosts(newPosts);
+        setPostList(newPosts);
     }
 
     return (
