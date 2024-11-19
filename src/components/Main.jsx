@@ -7,7 +7,14 @@ import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import style from '../components/Main.module.css';
 
 // array post iniziali
-const initialPosts = [];
+const initialPosts = {
+    name: '',
+    image: '',
+    description: '',
+    category: [],
+    tags: [],
+    public: false
+};
 
 export default function Main() {
     const [posts, setPosts] = useState(initialPosts);
@@ -46,6 +53,8 @@ export default function Main() {
             <div className={style.container}>
                 <div className={style.row}>
                     <form onSubmit={addPost}>
+
+                        {/* #region input */}
                         <div className={style.addPost}>
 
                             {/* input nome */}
@@ -130,6 +139,9 @@ export default function Main() {
                                 Aggiungi post
                             </button>
                         </div>
+                        {/* #endregion input */}
+
+                        {/* #region output */}
                         <ul>
                             {posts.map((post, index) => <li key={index}>
                                 <span>
@@ -140,6 +152,7 @@ export default function Main() {
                                 </button>
                             </li>)}
                         </ul>
+                        {/* #endregion output */}
                     </form>
                 </div>
             </div>
