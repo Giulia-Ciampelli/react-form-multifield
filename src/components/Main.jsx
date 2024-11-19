@@ -47,7 +47,85 @@ export default function Main() {
                 <div className={style.row}>
                     <form onSubmit={addPost}>
                         <div className={style.addPost}>
-                            <input type="text" id="textInput" placeholder="Titolo nuovo post" value={newPost} onChange={e => setNewPost(e.target.value)} />
+
+                            {/* input nome */}
+                            <input type="text"
+                                id="textInput"
+                                placeholder="Titolo nuovo post"
+                                value={newPost}
+                                onChange={e => setNewPost(e.target.value)} />
+
+                            {/* input immagine */}
+                            <input type="text"
+                                id="textInput"
+                                placeholder="URL immagine"
+                                value={newPost}
+                                onChange={e => setNewPost(e.target.value)} />
+
+                            {/* input contenuto */}
+                            <textarea
+                                id="descInput"
+                                placeholder="Contenuto post..."
+                                value={newPost}
+                                onChange={e => setNewPost(e.target.value)}>
+                            </textarea>
+
+                            {/* input select categoria */}
+                            <select
+                                id="selectInput"
+                                placeholder="Seleziona categoria post"
+                                value={newPost}
+                                onChange={e => setNewPost(e.target.value)}>
+                                <option value="1">
+                                    cat1
+                                </option>
+                                <option value="2">
+                                    cat2
+                                </option>
+                                <option value="3">
+                                    cat3
+                                </option>
+                                <option value="4">
+                                    cat4
+                                </option>
+                                <option value="5">
+                                    cat5
+                                </option>
+                            </select>
+
+                            {/* input checkbox tags */}
+                            <input type="checkbox"
+                                id="checkInput1"
+                                value={newPost}
+                                onChange={e => setNewPost(e.target.value)} />
+                            <label>
+                                Tag1
+                            </label>
+                            <input type="checkbox"
+                                id="checkInput2"
+                                value={newPost}
+                                onChange={e => setNewPost(e.target.value)} />
+                            <label>
+                                Tag2
+                            </label>
+                            <input type="checkbox"
+                                id="checkInput3"
+                                value={newPost}
+                                onChange={e => setNewPost(e.target.value)} />
+                            <label>
+                                Tag3
+                            </label>
+
+                            {/* input pubblica o meno */}
+                            <input type="checkbox"
+                                id="checkInputPublic"
+                                value={newPost}
+                                onChange={e => setNewPost(e.target.value)} />
+                            <label>
+                                Post pubblico
+                            </label>
+
+                            {/* bottone submit */}
                             <button type="submit">
                                 Aggiungi post
                             </button>
