@@ -14,7 +14,7 @@ const initialPostsData = {
     name: '',
     image: '',
     description: '',
-    category: [],
+    category: '', // *modifica temporanea?
     tags: [],
     public: false
 };
@@ -84,7 +84,7 @@ export default function Main() {
 
                             {/* input immagine */}
                             <input type="text"
-                                id="textInput"
+                                id="textImageInput"
                                 placeholder="URL immagine"
                                 value={postsData.image}
                                 onChange={handleFormField} />
@@ -162,9 +162,21 @@ export default function Main() {
                         {/* #region output */}
                         <ul>
                             {posts.map((post, index) => <li key={index}>
-                                <span>
-                                    {post.name}
-                                </span>
+                                <div className={style.card}>
+                                    <p>
+                                        {post.name}
+                                    </p>
+                                    <img src={post.image} alt={post.name} />
+                                    <p>
+                                        {post.description}
+                                    </p>
+                                    <p>
+                                        {post.category}
+                                    </p>
+                                    <p>
+                                        {post.tags}
+                                    </p>
+                                </div>
                                 <button onClick={handleTrashPost} data-index={index}>
                                     <FontAwesomeIcon icon={faTrashCan} />
                                 </button>
