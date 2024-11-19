@@ -22,7 +22,6 @@ const initialPostsData = {
 export default function Main() {
     const [postsData, setPostsData] = useState(initialPostsData);
     const [postList, setPostList] = useState(posts); // variabile db per chiarezza
-    const [newPost, setNewPost] = useState('');
 
     // funzione per aggiungere un post nuovo
     function addPost(e) {
@@ -40,14 +39,14 @@ export default function Main() {
             ...postList
         ]);
 
-        setPostList(initialPostsData);
+        setPostsData(initialPostsData);
     }
 
     // funzione onChange
     function handleFormField(e) {
-        const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
+        const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
 
-        setPostList({
+        setPostsData({
             ...postsData,
             [e.target.name]: value
         })
@@ -78,6 +77,7 @@ export default function Main() {
                             {/* input nome */}
                             <input type="text"
                                 id="textInput"
+                                name="name"
                                 placeholder="Titolo nuovo post"
                                 value={postsData.name}
                                 onChange={handleFormField} />
@@ -85,6 +85,7 @@ export default function Main() {
                             {/* input immagine */}
                             <input type="text"
                                 id="textImageInput"
+                                name="image"
                                 placeholder="URL immagine"
                                 value={postsData.image}
                                 onChange={handleFormField} />
@@ -92,6 +93,7 @@ export default function Main() {
                             {/* input contenuto */}
                             <textarea
                                 id="descInput"
+                                name="description"
                                 placeholder="Contenuto post..."
                                 value={postsData.description}
                                 onChange={handleFormField}>
@@ -100,6 +102,7 @@ export default function Main() {
                             {/* input select categoria */}
                             <select
                                 id="selectInput"
+                                name="category"
                                 placeholder="Seleziona categoria post"
                                 value={postsData.category}
                                 onChange={handleFormField}>
@@ -123,6 +126,7 @@ export default function Main() {
                             {/* input checkbox tags */}
                             <input type="checkbox"
                                 id="checkInput1"
+                                name="tag1"
                                 value={postsData.tags}
                                 onChange={handleFormField} />
                             <label>
@@ -130,6 +134,7 @@ export default function Main() {
                             </label>
                             <input type="checkbox"
                                 id="checkInput2"
+                                name="tag2"
                                 value={postsData.tags}
                                 onChange={handleFormField} />
                             <label>
@@ -137,6 +142,7 @@ export default function Main() {
                             </label>
                             <input type="checkbox"
                                 id="checkInput3"
+                                name="tag3"
                                 value={postsData.tags}
                                 onChange={handleFormField} />
                             <label>
@@ -146,6 +152,7 @@ export default function Main() {
                             {/* input pubblica o meno */}
                             <input type="checkbox"
                                 id="checkInputPublic"
+                                name="public"
                                 value={postsData.public}
                                 onChange={handleFormField} />
                             <label>
@@ -175,6 +182,9 @@ export default function Main() {
                                     </p>
                                     <p>
                                         {post.tags}
+                                    </p>
+                                    <p>
+                                        {post.public ? 'Post pubblico' : 'Post privato'}
                                     </p>
                                 </div>
                                 <button onClick={handleTrashPost} data-index={index}>
