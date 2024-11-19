@@ -6,8 +6,11 @@ import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 // modulo stile
 import style from '../components/Main.module.css';
 
+// finto db
+import posts from '../data/posts.js';
+
 // array post iniziali
-const initialPosts = {
+const initialPostsData = {
     name: '',
     image: '',
     description: '',
@@ -17,21 +20,27 @@ const initialPosts = {
 };
 
 export default function Main() {
-    const [posts, setPosts] = useState(initialPosts);
+    const [postsData, setPostsData] = useState(initialPostsData);
+    const [postList, setPostList] = useState(posts); // variabile db per chiarezza
     const [newPost, setNewPost] = useState('');
 
     // funzione per aggiungere un post nuovo
     function addPost(e) {
         e.preventDefault();
 
-        // clonazione array
-        const newPosts = {
-            newPost,
-            ...posts
+        // clonazione oggetto
+        const newPost = {
+            id: Date.now(),
+            ...formData
         };
 
         // aggiornamento UI
-        setPosts(newPosts);
+        setPostList([
+            newPost,
+            ...postList
+        ]);
+
+        setPostList(initialPostsData);
     }
 
     // funzione onChange
