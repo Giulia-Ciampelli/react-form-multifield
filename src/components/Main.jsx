@@ -74,21 +74,21 @@ export default function Main() {
                             <input type="text"
                                 id="textInput"
                                 placeholder="Titolo nuovo post"
-                                value={newPost}
+                                value={formData.name}
                                 onChange={handleFormField} />
 
                             {/* input immagine */}
                             <input type="text"
                                 id="textInput"
                                 placeholder="URL immagine"
-                                value={newPost}
+                                value={formData.image}
                                 onChange={handleFormField} />
 
                             {/* input contenuto */}
                             <textarea
                                 id="descInput"
                                 placeholder="Contenuto post..."
-                                value={newPost}
+                                value={formData.description}
                                 onChange={handleFormField}>
                             </textarea>
 
@@ -96,7 +96,7 @@ export default function Main() {
                             <select
                                 id="selectInput"
                                 placeholder="Seleziona categoria post"
-                                value={newPost}
+                                value={formData.category}
                                 onChange={handleFormField}>
                                 <option value="1">
                                     cat1
@@ -118,21 +118,21 @@ export default function Main() {
                             {/* input checkbox tags */}
                             <input type="checkbox"
                                 id="checkInput1"
-                                value={newPost}
+                                value={formData.tags}
                                 onChange={handleFormField} />
                             <label>
                                 Tag1
                             </label>
                             <input type="checkbox"
                                 id="checkInput2"
-                                value={newPost}
+                                value={formData.tags}
                                 onChange={handleFormField} />
                             <label>
                                 Tag2
                             </label>
                             <input type="checkbox"
                                 id="checkInput3"
-                                value={newPost}
+                                value={formData.tags}
                                 onChange={handleFormField} />
                             <label>
                                 Tag3
@@ -141,7 +141,7 @@ export default function Main() {
                             {/* input pubblica o meno */}
                             <input type="checkbox"
                                 id="checkInputPublic"
-                                value={newPost}
+                                value={formData.public}
                                 onChange={handleFormField} />
                             <label>
                                 Post pubblico
