@@ -25,14 +25,18 @@ export default function Main() {
         e.preventDefault();
 
         // clonazione array
-        const newPosts = [
+        const newPosts = {
             newPost,
             ...posts
-        ];
+        };
 
         // aggiornamento UI
         setPosts(newPosts);
-        setNewPost('');
+    }
+
+    // funzione onChange
+    function handleFormField(e) {
+
     }
 
     // funzione per cancellare post
@@ -62,21 +66,21 @@ export default function Main() {
                                 id="textInput"
                                 placeholder="Titolo nuovo post"
                                 value={newPost}
-                                onChange={e => setNewPost(e.target.value)} />
+                                onChange={handleFormField} />
 
                             {/* input immagine */}
                             <input type="text"
                                 id="textInput"
                                 placeholder="URL immagine"
                                 value={newPost}
-                                onChange={e => setNewPost(e.target.value)} />
+                                onChange={handleFormField} />
 
                             {/* input contenuto */}
                             <textarea
                                 id="descInput"
                                 placeholder="Contenuto post..."
                                 value={newPost}
-                                onChange={e => setNewPost(e.target.value)}>
+                                onChange={handleFormField}>
                             </textarea>
 
                             {/* input select categoria */}
@@ -84,7 +88,7 @@ export default function Main() {
                                 id="selectInput"
                                 placeholder="Seleziona categoria post"
                                 value={newPost}
-                                onChange={e => setNewPost(e.target.value)}>
+                                onChange={handleFormField}>
                                 <option value="1">
                                     cat1
                                 </option>
@@ -106,21 +110,21 @@ export default function Main() {
                             <input type="checkbox"
                                 id="checkInput1"
                                 value={newPost}
-                                onChange={e => setNewPost(e.target.value)} />
+                                onChange={handleFormField} />
                             <label>
                                 Tag1
                             </label>
                             <input type="checkbox"
                                 id="checkInput2"
                                 value={newPost}
-                                onChange={e => setNewPost(e.target.value)} />
+                                onChange={handleFormField} />
                             <label>
                                 Tag2
                             </label>
                             <input type="checkbox"
                                 id="checkInput3"
                                 value={newPost}
-                                onChange={e => setNewPost(e.target.value)} />
+                                onChange={handleFormField} />
                             <label>
                                 Tag3
                             </label>
@@ -129,7 +133,7 @@ export default function Main() {
                             <input type="checkbox"
                                 id="checkInputPublic"
                                 value={newPost}
-                                onChange={e => setNewPost(e.target.value)} />
+                                onChange={handleFormField} />
                             <label>
                                 Post pubblico
                             </label>
@@ -145,7 +149,7 @@ export default function Main() {
                         <ul>
                             {posts.map((post, index) => <li key={index}>
                                 <span>
-                                    {post}
+                                    {post.name}
                                 </span>
                                 <button onClick={handleTrashPost} data-index={index}>
                                     <FontAwesomeIcon icon={faTrashCan} />
