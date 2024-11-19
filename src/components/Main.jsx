@@ -21,7 +21,7 @@ const initialPostsData = {
 
 export default function Main() {
     const [postsData, setPostsData] = useState(initialPostsData);
-    const [postList, setPostList] = useState([]); // variabile vuota
+    const [postList, setPostList] = useState(posts); // variabile db
 
     // funzione per aggiungere un post nuovo
     function addPost(e) {
@@ -169,7 +169,7 @@ export default function Main() {
 
                         {/* #region output */}
                         <ul>
-                            {posts.map((post, index) => <li key={index}>
+                            {postList.map((post, index) => <li key={index}>
                                 <div className={style.card}>
                                     <p>
                                         {post.name}
